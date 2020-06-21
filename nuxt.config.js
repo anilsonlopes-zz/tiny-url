@@ -56,5 +56,8 @@ export default {
   },
   router: {
     base: process.env.ROUTER_BASE
+  },
+  generate: {
+    fallback: '404.html'
   }
 }
