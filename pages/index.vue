@@ -17,13 +17,17 @@
         />
         <button
           type="submit"
-          class="p-2 w-full rounded bg-gray-200 focus:shadow-outline focus:outline-none mt-2"
+          class="p-2 w-full rounded text-white bg-green-500 focus:shadow-outline focus:outline-none mt-2"
         >
           Generate
         </button>
-        <div v-if="tiny">
-          <nuxt-link class="tiny" :to="{ name: 'id', params: { id: tiny } }">
-            {{ tiny }}
+        <div v-if="tiny" class="pt-2">
+          <nuxt-link
+            class="text-center block p-2 rounded bg-green-800 text-xs"
+            :to="{ name: 'id', params: { id: tiny } }"
+          >
+            <span class="text-gray-200">{{ baseUrl }}/</span
+            ><span class="text-white">{{ tiny }}</span>
           </nuxt-link>
         </div>
       </form>
@@ -41,12 +45,17 @@ export default {
   },
   data() {
     return {
+      baseUrl: location.host + location.pathname,
       url: '',
       tiny: ''
     }
   },
   methods: {
     async generate() {
+      if (this.url.trim().length <= 1) {
+        return false
+      }
+
       const doc = await firebase
         .firestore()
         .collection('tiny-url')
