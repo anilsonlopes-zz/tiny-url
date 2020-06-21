@@ -16,4 +16,12 @@ if (firebase.apps.length === 0) {
   firebase.initializeApp(config)
 }
 
+export const parseData = (snap) => {
+  const arr = []
+  snap.forEach((doc) => {
+    arr.push(Object.assign(doc.data(), { id: doc.id }))
+  })
+  return arr
+}
+
 export default firebase
