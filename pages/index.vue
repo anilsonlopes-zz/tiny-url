@@ -24,9 +24,10 @@
         <div v-if="tiny" class="pt-2">
           <nuxt-link
             class="text-center block p-2 rounded bg-green-800 text-xs"
+            target="_blank"
             :to="{ name: 'id', params: { id: tiny } }"
           >
-            <span class="text-gray-200">{{ baseUrl }}/</span
+            <span class="text-gray-200">{{ baseUrl }}</span
             ><span class="text-white">{{ tiny }}</span>
           </nuxt-link>
         </div>
