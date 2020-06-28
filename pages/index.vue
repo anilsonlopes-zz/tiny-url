@@ -37,6 +37,7 @@
 </template>
 
 <script>
+import { nanoid } from 'nanoid'
 import firebase from '~/firebase'
 import Logo from '~/components/Logo.vue'
 
@@ -57,14 +58,16 @@ export default {
         return false
       }
 
-      const doc = await firebase
+      const id = nanoid(6)
+      await firebase
         .firestore()
         .collection('tiny-url')
-        .add({
+        .doc(id)
+        .set({
           url: this.url,
           createAt: firebase.firestore.FieldValue.serverTimestamp()
         })
-      this.tiny = doc.id
+      this.tiny = id
     }
   }
 }
