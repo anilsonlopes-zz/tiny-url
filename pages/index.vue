@@ -1,5 +1,7 @@
 <template>
-  <div class="mx-auto min-h-screen px-4 flex justify-center items-center">
+  <div
+    class="mx-auto min-h-screen px-4 flex justify-center items-center bg-gray-200"
+  >
     <div>
       <logo />
       <h1 class="text-center my-4 text-4xl text-gray-900">
